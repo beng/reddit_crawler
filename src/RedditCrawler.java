@@ -2,26 +2,41 @@ import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class RedditCrawler {
-    public RedditCrawler() {
+    private String url;
+    private Document doc;
+    
+    public RedditCrawler(String url) throws IOException {
+        this.url = url;
+        this.doc = connect();
     }
     
-    public String getTitle(Document doc) {
-        return doc.title();
-    }
-    
-    public Document connect(String url) throws IOException {
+    public Document connect() throws IOException {
         return Jsoup.connect(url).get();
     }
     
-    public static void main(String args[]) {
-        RedditCrawler rc = new RedditCrawler();
+    public String getTitle() {
+        return this.doc.title();
+    }
+    
+    public Elements getTag(String tag) {
+        return this.doc.getElementsByTag(tag);
+    }
+    
+    public Element getBody() {
+        return this.doc.body();
+    }
+    
+    public static void main(String args[]) {        
         String url = "http://google.com";
-        Document doc;
+        RedditCrawler rc;
+       
         try {
-            doc = rc.connect(url);
-            rc.getTitle(doc);
+            rc = new RedditCrawler(url);
+            System.out.println("Title is :: " + rc.getTag("title"));            
         } catch (IOException e) {
             e.printStackTrace();         
         }
