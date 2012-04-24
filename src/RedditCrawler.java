@@ -39,7 +39,11 @@ public class RedditCrawler {
             System.out.println("Title is :: " + rc.getTag("title"));            
         } catch (IOException e) {
             e.printStackTrace();         
-        }
-        
+        }                
+    }
+    
+    private static void usage() {
+        System.err.println ("Usage: java RedditCrawler <url>");
+        System.exit (1);
     }
 }
