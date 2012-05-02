@@ -1,2 +1,1 @@
-temporary :: placeholder 
-
+need to upload current version, which supports threading for simultaneous subreddit searches.
