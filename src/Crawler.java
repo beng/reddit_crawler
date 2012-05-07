@@ -31,7 +31,7 @@ public class Crawler {
     }
     
     public static void main(String args[]) throws IOException {
-        String r1 = "http://www.reddit.com/r/Trees";
+        String r1 = "http://www.reddit.com/r/Dota2";
         String ahref = "a[href]";
         String src = "src";
         Crawler c = new Crawler(r1, ahref);
